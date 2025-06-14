@@ -3,11 +3,11 @@ cd /d %~dp0
 cls
 
 echo :::::::::::::::::::::::::::::::::::::::
-echo ::  Windows Maintenance Script       ::
+echo ::  Windows Optimizer Script         ::
 echo ::                                   ::
 echo ::  Version 1.0.0                    ::
 echo ::                                   ::
-echo ::  Jun 12, 2025 by  S.H.E.I.K.H     ::
+echo ::  Jun 14, 2025 by  S.H.E.I.K.H     ::
 echo :::::::::::::::::::::::::::::::::::::::
 echo.
 echo.
