@@ -1,23 +1,9 @@
 @echo off
-cd /d %~dp0
-cls
-
-echo :::::::::::::::::::::::::::::::::::::::
-echo ::  Windows Optimizer Script         ::
-echo ::                                   ::
-echo ::  Version 1.0.0                    ::
-echo ::                                   ::
-echo ::  Jun 14, 2025 by  S.H.E.I.K.H     ::
-echo :::::::::::::::::::::::::::::::::::::::
-echo.
-echo.
-pause
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: This Script will repair Windows with SFC and DISM commands and then runs a deep clean command to       ::
 :: delete temporary files.                                                                                ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Check to see if this batch file is being run as Administrator. If it is not, then rerun the batch file ::
@@ -29,6 +15,21 @@ pause
 ::::::::::::::::::::::::::::::::::::::::::::::::
 :: End Routine to check if being run as Admin ::
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+cd /d "%~dp0"
+cls
+
+echo :::::::::::::::::::::::::::::::::::::::
+echo ::  Windows Optimizer Script         ::
+echo ::                                   ::
+echo ::  Version 2.0.0 (Stable)           ::
+echo ::                                   ::
+echo ::  Jun 20, 2025 by  S.H.E.I.K.H     ::
+echo :::::::::::::::::::::::::::::::::::::::
+echo.
+echo.
+pause
+
 
 echo.
 echo ::::::::::::::::::::::::::::::::
@@ -62,7 +63,7 @@ echo ::::: Checking Disk :::::
 echo :::::::::::::::::::::::::
 echo.
 
-chkdsk >nul 2>&1
+chkdsk
 
 echo Done!
 
@@ -180,24 +181,24 @@ echo ::::: Cleaning Windows Temp :::::
 echo :::::::::::::::::::::::::::::::::
 echo.
 
-rundll32.exe pnpclean.dll,RunDLL_PnpClean /drivers /maxclean
-cleanmgr /sagerun 1
-cleanmgr /verylowdisk
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 1
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 2
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 8
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 10
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 16
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 20
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 32
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 64
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 40
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 80
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 128
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 255
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 800
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4351
+rundll32.exe pnpclean.dll,RunDLL_PnpClean /drivers /maxclean >nul 2>&1
+cleanmgr /sagerun 1 >nul 2>&1
+cleanmgr /verylowdisk >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 1 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 2 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 8 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 10 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 16 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 20 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 32 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 64 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 40 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 80 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 128 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 255 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 800 >nul 2>&1
+C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4351 >nul 2>&1
 pushd "C:\Windows\Temp" && (rd /s /q "C:\Windows\Temp" 2>nul & popd)
 pushd "%LOCALAPPDATA%\Temp" && (rd /s /q "%LOCALAPPDATA%\Temp" 2>nul & popd)
 pushd "C:\Windows\Prefetch" && (rd /s /q "C:\Windows\Prefetch" 2>nul & popd)
@@ -206,6 +207,10 @@ pushd "D:\$Recycle.Bin" && (rd /s /q "D:\$Recycle.Bin" 2>nul & popd)
 pushd "E:\$Recycle.Bin" && (rd /s /q "E:\$Recycle.Bin" 2>nul & popd)
 pushd "F:\$Recycle.Bin" && (rd /s /q "F:\$Recycle.Bin" 2>nul & popd)
 pushd "G:\$Recycle.Bin" && (rd /s /q "G:\$Recycle.Bin" 2>nul & popd)
+pushd "C:\Temp\" && (rd /s /q "C:\Temp\" 2>nul & popd)
+pushd "D:\Temp\" && (rd /s /q "D:\Temp\" 2>nul & popd)
+pushd "E:\Temp\" && (rd /s /q "E:\Temp\" 2>nul & popd)
+pushd "F:\Temp\" && (rd /s /q "F:\Temp\" 2>nul & popd)
 pushd "G:\Temp\" && (rd /s /q "G:\Temp\" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\WER" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WER" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\INetCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCache" 2>nul & popd)
@@ -223,7 +228,7 @@ echo ::::: Disk Optimization :::::
 echo :::::::::::::::::::::::::::::
 echo.
 
-defrag /C /O >nul
+defrag /C /O >nul 2>&1
 
 echo Done!
 echo.
@@ -245,6 +250,10 @@ pushd "D:\$Recycle.Bin" && (rd /s /q "D:\$Recycle.Bin" 2>nul & popd)
 pushd "E:\$Recycle.Bin" && (rd /s /q "E:\$Recycle.Bin" 2>nul & popd)
 pushd "F:\$Recycle.Bin" && (rd /s /q "F:\$Recycle.Bin" 2>nul & popd)
 pushd "G:\$Recycle.Bin" && (rd /s /q "G:\$Recycle.Bin" 2>nul & popd)
+pushd "C:\Temp\" && (rd /s /q "C:\Temp\" 2>nul & popd)
+pushd "D:\Temp\" && (rd /s /q "D:\Temp\" 2>nul & popd)
+pushd "E:\Temp\" && (rd /s /q "E:\Temp\" 2>nul & popd)
+pushd "F:\Temp\" && (rd /s /q "F:\Temp\" 2>nul & popd)
 pushd "G:\Temp\" && (rd /s /q "G:\Temp\" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\WER" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WER" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\INetCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCache" 2>nul & popd)
