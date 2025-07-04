@@ -22,9 +22,9 @@ cls
 echo :::::::::::::::::::::::::::::::::::::::
 echo ::  Windows Optimizer Script         ::
 echo ::                                   ::
-echo ::  Version 2.0.0 (Stable)           ::
+echo ::  Version 2.2.0 (Stable)           ::
 echo ::                                   ::
-echo ::  Jun 20, 2025 by  S.H.E.I.K.H     ::
+echo ::  Jul 07, 2025 by  S.H.E.I.K.H     ::
 echo :::::::::::::::::::::::::::::::::::::::
 echo.
 echo.
@@ -106,8 +106,7 @@ echo.
 :: If you don't have any of these applications, please remove this part ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-cleanmgr /sagerun 1 >nul 2>&1
-cleanmgr /verylowdisk >nul 2>&1
+cmd.exe /c Cleanmgr /sageset:65535 & Cleanmgr /sagerun:65535 >nul 2>&1
 start RevoUninPro.exe >nul 2>&1
 net start "PCManager Service Store" >nul 2>&1
 start shell:AppsFolder\Microsoft.MicrosoftPCManager_8wekyb3d8bbwe!App >nul 2>&1
@@ -157,6 +156,7 @@ echo.
 pushd "%LOCALAPPDATA%\Microsoft\Office\16.0\Wef\" && (rd /s /q "%LOCALAPPDATA%\Microsoft\Office\16.0\Wef\" 2>nul & popd)
 pushd "%userprofile%\AppData\Local\Packages\Microsoft.Win32WebViewHost_cw5n1h2txyewy\AC\#!123\INetCache\" && (rd /s /q "%userprofile%\AppData\Local\Packages\Microsoft.Win32WebViewHost_cw5n1h2txyewy\AC\#!123\INetCache\" 2>nul & popd)
 pushd "%userprofile%\AppData\Local\Microsoft\Outlook\HubAppFileCache" && (rd /s /q "%userprofile%\AppData\Local\Microsoft\Outlook\HubAppFileCache" 2>nul & popd)
+rd /s /q "%USERPROFILE%\Documents\Custom Office Templates" 2>nul & popd
 
 echo Done!
 
@@ -181,6 +181,12 @@ echo ::::: Cleaning Windows Temp :::::
 echo :::::::::::::::::::::::::::::::::
 echo.
 
+taskkill /F /IM "CrossDeviceResume.exe" >nul 2>&1
+cd "C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy" >nul 2>&1
+takeown /f "Microsoft.Web.WebView2.Core.dll" >nul 2>&1
+icacls "Microsoft.Web.WebView2.Core.dll" /grant administrators:F >nul 2>&1
+del /f /q "C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\Microsoft.Web.WebView2.Core.dll" >nul 2>&1
+cd /d "C:\Windows\System32" >nul 2>&1
 rundll32.exe pnpclean.dll,RunDLL_PnpClean /drivers /maxclean >nul 2>&1
 cleanmgr /sagerun 1 >nul 2>&1
 cleanmgr /verylowdisk >nul 2>&1
@@ -199,6 +205,13 @@ C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 128 >nul 2>
 C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 255 >nul 2>&1
 C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 800 >nul 2>&1
 C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4351 >nul 2>&1
+pushd "%LocalAppData%\Microsoft\Windows\WER" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WER" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\INetCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCache" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\INetCookies" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCookies" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\IECompatCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatCache" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\IECompatUaCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatUaCache" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" && (rd /s /q "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" 2>nul & popd)
 pushd "C:\Windows\Temp" && (rd /s /q "C:\Windows\Temp" 2>nul & popd)
 pushd "%LOCALAPPDATA%\Temp" && (rd /s /q "%LOCALAPPDATA%\Temp" 2>nul & popd)
 pushd "C:\Windows\Prefetch" && (rd /s /q "C:\Windows\Prefetch" 2>nul & popd)
@@ -209,16 +222,8 @@ pushd "F:\$Recycle.Bin" && (rd /s /q "F:\$Recycle.Bin" 2>nul & popd)
 pushd "G:\$Recycle.Bin" && (rd /s /q "G:\$Recycle.Bin" 2>nul & popd)
 pushd "C:\Temp\" && (rd /s /q "C:\Temp\" 2>nul & popd)
 pushd "D:\Temp\" && (rd /s /q "D:\Temp\" 2>nul & popd)
-pushd "E:\Temp\" && (rd /s /q "E:\Temp\" 2>nul & popd)
-pushd "F:\Temp\" && (rd /s /q "F:\Temp\" 2>nul & popd)
-pushd "G:\Temp\" && (rd /s /q "G:\Temp\" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\WER" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WER" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\INetCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCache" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\INetCookies" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCookies" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\IECompatCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatCache" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\IECompatUaCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatUaCache" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" && (rd /s /q "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" 2>nul & popd)
+del /f /q "C:\Windows\Logs\CBS\CBS.log" >nul 2>&1
+del /f /q "C:\Windows\Logs\DISM\dism.log" >nul 2>&1
 
 echo Done!
 
@@ -228,7 +233,7 @@ echo ::::: Disk Optimization :::::
 echo :::::::::::::::::::::::::::::
 echo.
 
-defrag /C /O >nul 2>&1
+defrag /C /O
 
 echo Done!
 echo.
@@ -242,6 +247,13 @@ echo ::::: Shutting Down ::::
 echo ::::::::::::::::::::::::
 echo.
 
+pushd "%LocalAppData%\Microsoft\Windows\WER" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WER" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\INetCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCache" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\INetCookies" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCookies" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\IECompatCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatCache" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\IECompatUaCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatUaCache" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" && (rd /s /q "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" 2>nul & popd)
 pushd "C:\Windows\Temp" && (rd /s /q "C:\Windows\Temp" 2>nul & popd)
 pushd "%LOCALAPPDATA%\Temp" && (rd /s /q "%LOCALAPPDATA%\Temp" 2>nul & popd)
 pushd "C:\Windows\Prefetch" && (rd /s /q "C:\Windows\Prefetch" 2>nul & popd)
@@ -252,15 +264,5 @@ pushd "F:\$Recycle.Bin" && (rd /s /q "F:\$Recycle.Bin" 2>nul & popd)
 pushd "G:\$Recycle.Bin" && (rd /s /q "G:\$Recycle.Bin" 2>nul & popd)
 pushd "C:\Temp\" && (rd /s /q "C:\Temp\" 2>nul & popd)
 pushd "D:\Temp\" && (rd /s /q "D:\Temp\" 2>nul & popd)
-pushd "E:\Temp\" && (rd /s /q "E:\Temp\" 2>nul & popd)
-pushd "F:\Temp\" && (rd /s /q "F:\Temp\" 2>nul & popd)
-pushd "G:\Temp\" && (rd /s /q "G:\Temp\" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\WER" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WER" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\INetCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCache" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\INetCookies" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCookies" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\IECompatCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatCache" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\IECompatUaCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatUaCache" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" 2>nul & popd)
-pushd "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" && (rd /s /q "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" 2>nul & popd)
 
 shutdown.exe /s /t 0
