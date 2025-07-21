@@ -4,6 +4,8 @@ This script is designed to help users repair their Windows operating system and 
 
 It automates various maintenance tasks to improve system performance and stability.
 
+Highly Recommended installing Microsoft PC Manager and Revo Uninstaller Pro before using.
+
 
 ▎Features
 
