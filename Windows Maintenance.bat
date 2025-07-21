@@ -1,7 +1,7 @@
 @ECHO OFF
 SETLOCAL EnableDELayedExpansion
 SET Version=1.0.0
-Set ReleaseTime=Jul 20, 2025
+Set ReleaseTime=Jul 21, 2025
 Title Windows Maintenance Script - by S.H.E.I.K.H (V. %Version%)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -28,7 +28,7 @@ ECHO ::                                   ::
 ECHO ::       GitHub: Sheikh98-DEV        ::
 ECHO :::::::::::::::::::::::::::::::::::::::
 ECHO .
-ECHO Recommended to launch Monthly.
+ECHO Recommended to launch Monthly and after Windows update.
 ECHO .
 ECHO Press any key to start optimization ...
 Pause >null
@@ -43,7 +43,7 @@ ECHO.
 control wscui.cpl >nul 2>&1
 MSchedExe.exe Start
 ECHO Please wait until the end of maintenance,
-ECHO Then return here and press any key to continue...
+ECHO then return here and press any key to continue...
 pause >nul
 ECHO Running idle tasks, please wait...
 rundll32.exe advapi32.dll,ProcessIdleTasks
@@ -175,7 +175,7 @@ ECHO Done!
 
 ECHO.
 ECHO :::::::::::::::::::::::::::::
-ECHO ::::: Resetting NETwork :::::
+ECHO ::::: Resetting Network :::::
 ECHO :::::::::::::::::::::::::::::
 ECHO.
 
